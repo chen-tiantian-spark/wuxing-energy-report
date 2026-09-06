@@ -28,14 +28,15 @@
 
 ## 快速开始
 
-1. 下载本仓库，放进你所用 AI 工具的 skills 目录（支持 WorkBuddy、Claude Code 等，开箱即用，无需安装任何依赖）；
-2. 对 AI 说：
+1. 下载本仓库（**Code** 按钮 → **Download ZIP**，或到 Releases 页下 zip），解压后把文件夹重命名为 `wuxing-energy-report`，放进你所用 AI 工具的 skills 目录（支持 WorkBuddy、Claude Code、Codex，开箱即用，无需安装任何依赖）；
+2. 想在开始前列一眼装没装全，可在 skill 目录里跑 `python3 scripts/selfcheck.py`；
+3. 对 AI 说：
 
 ```
 帮我看看我的能量说明书，2001年7月1日 凌晨4点55分 广东深圳 女
 ```
 
-3. 得到一份专属报告，之后可以围绕它无限追问（工作、关系、节奏……）。
+4. 得到一份专属报告，之后可以围绕它无限追问（工作、关系、节奏……）。
 
 > 详细安装说明见 [INSTALL.md](INSTALL.md)。
 

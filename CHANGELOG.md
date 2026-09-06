@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.7 · 2026-09-06（下载体验修复：从「能下载」到「下载下来就能用」）
+
+- **`references/` 三个中文 .md 改英文名**（`红线清单.md`→`redlines.md`、`对话与文案.md`→`dialogue.md`、`五行落生活对照.md`→`wuxing-in-life.md`）。
+  仓库内所有文件名现已全部为 ASCII。原因：GitHub「Download ZIP」在部分解压方式下会**静默跳过**非 ASCII 文件名的条目且退出码仍为 0，用户会拿到一个看起来装好、实际缺红线清单的 skill——而 SKILL.md 要求动手前必读它，属于合规风险。CHANGELOG 里的旧文件名属历史记录，保留不改。
+- **新增 `scripts/selfcheck.py`**（纯标准库）：四项一次查完——必备文件齐不齐（含 `references/` 三个文档）、排盘能不能跑、渲染模板完不完整、更新源配没配。任何一项失败非 0 退出。把「静默失败」变成显式报错。
+- **目录名与 `name` 统一为 `wuxing-energy-report`**：SKILL.md frontmatter 的 `name` 由中文改为 `wuxing-energy-report`（`description` 里的中文触发词原样保留，不影响唤起）。Codex / Claude Code 现在开箱即用，不用再手动改名。
+- **INSTALL.md 新增「零、从 GitHub 下载后」**：补上「解压 → 去掉 `-main` 后缀 → 再放 skills 目录」这条此前完全缺失的第一步。
+- **修正 INSTALL.md 自检期望值**：写成数组 `"八字": ["辛巳","甲午",...]`，实际输出是字符串 `"八字": "辛巳 甲午 乙丑 戊寅"`。
+- **修正 SKILL.md 渲染自检第④项**：`grep -c 'class="dayun'` 会把流年卡片一起数进去（实际 20 而非 16），照旧文档自检会误判渲染失败。现拆成 ④ 大运 16 + ④b 流年 4 两条。
+- **更新 HANDOVER.md 过时描述**：`update.json` 不再是「占位符待作者填」；补充 `selfcheck.py` 与英文根目录名。
+- **README 快速开始**：补解压重命名步骤、补上漏掉的 Codex。
+
 ## v1.6 · 2026-09-05（自助更新机制：update.py + VERSION + update.json）
 
 - **新增 `VERSION`**：skill 当前版本号（update.py 与 release 流程的唯一事实源）。
@@ -10,7 +22,7 @@
   - git clone 安装（根目录有 `.git`）自动改走 `git fetch` + `git pull --ff-only`；
   - 已实测：占位符提示 / 版本对比 / 拒绝路径 / 端到端替换 + 备份 / sha256 篡改拦截。
 - **SKILL.md 新增「九、检查更新」** + 防误触发表加触发行：先 `--check` → 展示 changelog 征得同意 → 才准 `--apply --yes`，绝不静默更新。
-- **维护侧（不随 skill 包分发）**：发布脚本 `release.sh` 与机制说明放在项目 `skill开发/` 目录；发布后只需把 release.sh 生成的 zip 传到 Release、把 latest.json 提交到仓库。
+- **维护侧（不随 skill 包分发）**：发布脚本 `release.sh` 放在仓库外（作者本地发布目录，不进 git）；发布后只需把 release.sh 生成的 zip 传到 Release、把 latest.json 提交到仓库。
 - 顺手修正：防误触发表「问怎么安装」一行还写着「装 lunar-python」（v1.4 vendor 后已过时），改为「依赖已 vendor 内置，免安装」。
 
 ## v1.5 · 2026-09-05（新用户全流程实测：话术产品化 + 输出位置 + 对话红线）

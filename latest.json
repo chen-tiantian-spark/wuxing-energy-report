@@ -1,7 +1,7 @@
 {
-  "version": "1.6",
+  "version": "1.7",
   "released_at": "2026-09-06",
-  "zip_url": "https://github.com/chen-tiantian-spark/wuxing-energy-report/releases/download/v1.6/wuxing-energy-report_v1.6.zip",
-  "sha256": "09f645753465bfe5056937eb47054a4212636615a10c8741dd7907b6e68d73b9",
-  "changelog": "v1.6 自助更新机制：新增 VERSION / update.json / scripts/update.py，对 AI 说「检查更新」即可自查升级（先展示更新说明、经你同意才执行，更新前自动备份）。\n\nv1.5 话术产品化：问「你能做什么」时不再讲脚本和实现细节，只讲你能得到什么、要给我什么、信息安不安全；报告输出位置修正（不再落到系统临时目录导致预览打不开）；对话回复同样过红线检查。\n\nv1.4 跨环境适配：排盘依赖 lunar-python 已内置打包，任何 python3 直接可跑，不用装任何东西；修正从弱格局下喜忌取用自相矛盾的问题。\n\nv1.3 隐私与健壮性：写死路径清除、城市经度未命中不再静默错盘、劫财十神修正。\n\nv1.2 新增流年详解（当年 + 明年的事业 / 健康 / 感情 / 注意事项）。"
+  "zip_url": "https://github.com/chen-tiantian-spark/wuxing-energy-report/releases/download/v1.7/wuxing-energy-report_v1.7.zip",
+  "sha256": "968419ab059b1c97692e9d18111d632e3d171a0c10a466dd03f99cfc894e2873",
+  "changelog": "v1.7 下载体验修复：从「能下载」到「下载下来就能用」。\n\n· references 三个中文文档改英文名（redlines / dialogue / wuxing-in-life），仓库内文件名全部 ASCII。原因：GitHub「Download ZIP」在部分解压方式下会静默跳过非 ASCII 条目且退出码仍是 0，用户会拿到缺红线清单的残缺包——而红线清单是动手前必读，属合规风险。\n· 新增 scripts/selfcheck.py：四项一次查完（必备文件 / 排盘 / 渲染模板 / 更新源），把静默失败变成显式报错。装完跑一次即可确认装全。\n· 目录名与 name 统一为 wuxing-energy-report，Codex / Claude Code 开箱即用，不用再手动改名。\n· INSTALL 补上此前完全缺失的「从 GitHub 下载后第一步」（解压 → 去掉 -main 后缀 → 再放 skills 目录）。\n· 修正两处自检期望值错误：INSTALL 的八字字段格式（数组 → 字符串）、SKILL 的大运卡片数（20 → 大运 16 + 流年 4）。\n· HANDOVER 过时描述更新、README 快速开始补重命名与 Codex。\n\nv1.6 自助更新机制：新增 VERSION / update.json / scripts/update.py，对 AI 说「检查更新」即可自查升级（先展示更新说明、经你同意才执行，更新前自动备份）。\n\nv1.5 话术产品化：问「你能做什么」时不再讲脚本和实现细节，只讲你能得到什么、要给我什么、信息安不安全；报告输出位置修正；对话回复同样过红线检查。\n\nv1.4 跨环境适配：排盘依赖 lunar-python 已内置打包，任何 python3 直接可跑；修正从弱格局下喜忌取用自相矛盾的问题。\n\nv1.3 隐私与健壮性：写死路径清除、城市经度未命中不再静默错盘、劫财十神修正。\n\nv1.2 新增流年详解（当年 + 明年的事业 / 健康 / 感情 / 注意事项）。"
 }
