@@ -1,0 +1,10 @@
+{
+  "channel": "stable",
+  "sources": [
+    {
+      "name": "github",
+      "latest_url": "https://raw.githubusercontent.com/chen-tiantian-spark/wuxing-energy-report/main/latest.json"
+    }
+  ],
+  "说明": "自动更新源配置。sources 按序尝试，第一个能连通的生效；URL 含 TODO 或尖括号占位符的源会被 update.py 自动跳过。国内访问 raw.githubusercontent.com 不畅时，可在 sources 里追加一个 gitee 镜像源（格式相同，latest_url 换成该仓库的 raw 地址）。"
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="lWLKQezXXK9BYhjFtMh6Ne">
+<head data-page-node-id="GXxsTuAx9ZxRLsHDCKpFGF">
+<meta charset="UTF-8" data-page-node-id="IbfnltB3UEifPo6IQTuH28">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="jDayh41ngrQ5P2U3HtdUuz">
+<title>五行能量说明书</title>
+<style>
+  /* ============ 主题色系统：日主五行 → 主题色 ============
+     渲染时把 <body> 的 data-wx 设成日主五行（金/木/水/火/土）即可自动换整套配色。 */
+  :root {
+    --bg: #f7f4ee;
+    --bg2: #ffffff;
+    --text: #3a362e;
+    --text-dim: #6f6a5e;
+    --text-faint: #a39d8e;
+    --card: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+  }
+  body[data-wx="金"] { --accent: #b8912f; --accent-bright: #8a6a1c; --accent-deep: #6b5013; --accent-soft: rgba(184,145,47,0.10); --accent-glow: rgba(184,145,47,0.28); }
+  body[data-wx="木"] { --accent: #2f9e74; --accent-bright: #1f6f4f; --accent-deep: #15543c; --accent-soft: rgba(47,158,116,0.10); --accent-glow: rgba(47,158,116,0.28); }
+  body[data-wx="水"] { --accent: #3d84c4; --accent-bright: #2a5f8f; --accent-deep: #1e476d; --accent-soft: rgba(61,132,196,0.10); --accent-glow: rgba(61,132,196,0.28); }
+  body[data-wx="火"] { --accent: #cf4a3a; --accent-bright: #a33628; --accent-deep: #7e281d; --accent-soft: rgba(207,74,58,0.10); --accent-glow: rgba(207,74,58,0.28); }
+  body[data-wx="土"] { --accent: #a9712f; --accent-bright: #7d511c; --accent-deep: #5e3d14; --accent-soft: rgba(169,113,47,0.10); --accent-glow: rgba(169,113,47,0.28); }
+
+  /* 五行能量色（独立于主题色，用于大运干支 / 喜用标签 / 五行标注） */
+  .wx-jin  { color:#b8912f; }
+  .wx-mu   { color:#2f9e74; }
+  .wx-shui { color:#3d84c4; }
+  .wx-huo  { color:#cf4a3a; }
+  .wx-tu   { color:#a9712f; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: radial-gradient(1200px 600px at 50% -10%, var(--accent-soft), transparent),
+                var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 16px;
+    min-height: 100vh;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 56px 28px 80px; }
+
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero .tag { display: inline-block; font-size: 13px; letter-spacing: 3px; color: var(--accent-bright); border: 1px solid var(--accent-glow); border-radius: 999px; padding: 4px 16px; margin-bottom: 22px; }
+  .hero h1 { font-size: 34px; font-weight: 700; letter-spacing: 6px; margin-bottom: 10px; }
+  .hero .sub { color: var(--text-dim); font-size: 15px; }
+  .hero .dms { display: inline-block; margin-top: 20px; color: var(--accent-bright); font-size: 18px; letter-spacing: 1px; }
+
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 30px 32px; margin-bottom: 22px; position: relative; overflow: hidden; }
+  .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(var(--accent), transparent); opacity: .8; }
+  h2 { font-size: 20px; letter-spacing: 2px; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  h2 .no { color: var(--accent); font-size: 15px; font-weight: 700; }
+  h3 { font-size: 16px; color: var(--accent-bright); margin: 18px 0 8px; }
+  p { color: var(--text); margin-bottom: 12px; }
+  .dim { color: var(--text-dim); }
+  .faint { color: var(--text-faint); font-size: 13px; }
+  strong { color: var(--accent-bright); font-weight: 600; }
+
+  .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
+  .pillar { text-align: center; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 8px; }
+  .pillar .pos { font-size: 12px; color: var(--text-faint); letter-spacing: 2px; margin-bottom: 6px; }
+  .pillar .gz { font-size: 24px; font-weight: 700; letter-spacing: 2px; }
+  .pillar .gz .gan { color: var(--accent-bright); }
+  .pillar .ss { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .pillar .hide { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+  .pillar.is-day { border-color: var(--accent-glow); background: var(--accent-soft); }
+  .wxbar { display: flex; flex-direction: column; gap: 9px; }
+  .wxbar .legend { font-size: 11px; color: var(--text-faint); margin-bottom: 1px; }
+  .wxrow { display: flex; align-items: center; gap: 12px; }
+  .wxrow .label { width: 28px; font-size: 14px; color: var(--text-dim); flex-shrink: 0; }
+  .wxrow .track { flex: 1; height: 12px; background: rgba(0,0,0,0.06); border-radius: 999px; overflow: hidden; }
+  .wxrow .fill { height: 100%; border-radius: 999px; opacity: .85; }
+  .wxrow .num { width: 22px; font-size: 14px; color: var(--text); text-align: right; font-weight: 600; flex-shrink: 0; }
+  .wxrow .benqi { width: 48px; font-size: 11px; color: var(--text-faint); text-align: right; flex-shrink: 0; }
+
+  /* ============ 白话 / 专业 双版本切换 ============ */
+  /* ===== 版本切换器 ===== */
+  .mode-switch { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0 0 22px; }
+  .mode-toggle { display: inline-flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid var(--border-strong); border-radius: 14px; padding: 6px; box-shadow: 0 8px 28px rgba(0,0,0,0.10); }
+  .mode-hint { font-size: 13px; color: var(--text-dim); padding: 0 14px 0 12px; white-space: nowrap; font-weight: 500; }
+  .mode-hint .arrow { color: var(--accent); margin-right: 5px; font-size: 15px; }
+  .mode-btn { border: none; background: transparent; color: var(--text-dim); font-size: 15px; letter-spacing: 2px; padding: 12px 24px; border-radius: 10px; cursor: pointer; transition: all .2s; white-space: nowrap; font-weight: 500; }
+  .mode-btn:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+  .mode-btn.active { background: var(--accent); color: #ffffff; font-weight: 700; box-shadow: 0 0 22px var(--accent-glow); }
+  .mode-btn.active:hover { background: var(--accent-bright); color: #ffffff; }
+  .mode-switch-tip { font-size: 12px; color: var(--text-faint); letter-spacing: 1px; text-align: center; }
+  @media (max-width: 640px) { .mode-btn { padding: 10px 18px; font-size: 14px; letter-spacing: 1px; } .mode-hint { display: none; } }
+
+  /* ===== 板块右上角版本角标 ===== */
+  .vc-corner { position: absolute; top: 18px; right: 22px; display: flex; align-items: center; z-index: 2; cursor: pointer; user-select: none; }
+  .vc-corner:hover .vc-badge { transform: scale(1.05); }
+  .vc-badge { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; padding: 5px 13px; border-radius: 999px; line-height: 1; transition: transform .15s; }
+  .vc-badge.show-plain { background: rgba(0,0,0,0.05); color: var(--text-dim); border: 1px solid var(--border-strong); }
+  .vc-badge.show-pro { display: none; }
+  body[data-mode="pro"] .vc-badge.show-plain { display: none; }
+  body[data-mode="pro"] .vc-badge.show-pro { display: inline-block; background: var(--accent); color: #ffffff; box-shadow: 0 0 14px var(--accent-glow); border: 1px solid var(--accent-bright); }
+  .has-badge h2 { padding-right: 88px; }
+  @media (max-width: 640px) { .vc-corner { top: 14px; right: 14px; } .vc-badge { font-size: 11px; padding: 4px 10px; } .has-badge h2 { padding-right: 76px; } }
+  .v-pro { display: none; }
+  body[data-mode="pro"] .v-plain { display: none; }
+  body[data-mode="pro"] .v-pro { display: block; }
+  .why-tag { display: inline-block; font-size: 11px; letter-spacing: 1px; color: var(--accent-bright); border: 1px dashed var(--accent-glow); border-radius: 6px; padding: 1px 8px; margin-right: 8px; vertical-align: 1px; }
+  .rule { border: 1px solid var(--border-strong); background: rgba(0,0,0,0.03); border-radius: 10px; padding: 13px 16px; margin: 10px 0; font-size: 14px; color: var(--text-dim); }
+  .rule .rt { color: var(--accent-bright); font-weight: 600; }
+
+  .key { border: 1px solid var(--accent-glow); background: var(--accent-soft); border-radius: 12px; padding: 18px 22px; margin: 16px 0; }
+  .key .t { color: var(--accent-bright); font-weight: 700; margin-bottom: 6px; }
+
+  .strength { border: 1px solid var(--accent-glow); background: var(--accent-soft); border-radius: 14px; padding: 20px 24px; margin: 12px 0; }
+  .strength .badge { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--accent-bright); border: 1px solid var(--accent-glow); border-radius: 999px; padding: 3px 14px; margin-bottom: 10px; }
+  .strength p { font-size: 14.5px; margin-bottom: 10px; }
+  .strength p:last-child { margin-bottom: 0; }
+
+  /* 白话版：五行缺多清单 */
+  .wxlist { display: flex; flex-direction: column; gap: 10px; margin: 8px 0; }
+  .wxlist .item { display: flex; gap: 12px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; }
+  .wxlist .item .wx { font-size: 15px; font-weight: 700; width: 40px; flex-shrink: 0; }
+  .wxlist .item p { font-size: 14px; color: var(--text-dim); margin: 0; }
+
+  /* 白话版：适合/不适合 大清单 */
+  .do-box { border-radius: 12px; padding: 16px 18px; }
+  .do-box.good { background: var(--accent-soft); border: 1px solid var(--accent-glow); }
+  .do-box.bad { background: rgba(207,74,58,0.05); border: 1px solid rgba(207,74,58,0.25); }
+  .do-box .dh { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .do-box.good .dh { color: var(--accent-bright); }
+  .do-box.bad .dh { color: #a33628; }
+  .do-box ul { list-style: none; }
+  .do-box li { font-size: 13.5px; color: var(--text-dim); padding: 4px 0 4px 16px; position: relative; }
+  .do-box li::before { content: "·"; position: absolute; left: 2px; font-weight: 700; }
+  .do-box.good li::before { color: var(--accent-bright); }
+  .do-box.bad li::before { color: #cf4a3a; }
+
+  .xiyong-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .xy { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .xy .xh { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .xy p { font-size: 13.5px; color: var(--text-dim); margin: 0; }
+  .xy p .do { color: var(--text); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .step .st { font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+  .step .st.go { color: var(--accent-bright); }
+  .step .st.avoid { color: #b8752a; }
+  .step .st.warn { color: #b8433a; }
+  .step p { font-size: 13.5px; color: var(--text-dim); margin: 0; }
+
+  .dayun-list { display: flex; flex-direction: column; gap: 12px; }
+  .dayun { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .dayun .head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+  .dayun .gz { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+  .dayun .gz .gan { font-weight: 700; }
+  .dayun .gz .zhi { font-weight: 500; opacity: .85; }
+  .dayun .yr { font-size: 12px; color: var(--text-faint); }
+  .dayun .wxtag { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .dayun p { font-size: 13.5px; color: var(--text-dim); margin: 0; }
+  .dayun .why { margin-top: 8px; font-size: 13px; color: var(--text-faint); }
+  .dayun.cur { border-color: var(--accent-glow); background: var(--accent-soft); }
+  .dayun.cur .tag2 { font-size: 11px; color: var(--accent-bright); border: 1px solid var(--accent-glow); border-radius: 999px; padding: 1px 8px; }
+  .dayun.past { opacity: .62; }
+
+  /* 流年板块 */
+  .dayun.ln { margin-bottom: 12px; }
+  .lntags { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px; }
+  .lntag { font-size: 11.5px; color: var(--text-dim); background: rgba(0,0,0,0.04); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+  .lntag.xi { color: var(--accent-bright); border-color: var(--accent-glow); background: var(--accent-soft); }
+  .dayun.ln h3 { font-size: 15px; color: var(--accent-bright); margin: 14px 0 6px; }
+  .dayun.ln p { font-size: 14px; }
+
+  .mirror { font-size: 17px; color: var(--text); background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 14px 0; }
+  .quote { font-size: 21px; font-weight: 600; text-align: center; color: var(--accent-bright); padding: 26px 10px; letter-spacing: 1px; }
+  .footer { text-align: center; color: var(--text-faint); font-size: 13px; margin-top: 40px; letter-spacing: 1px; }
+  .footer .heart { color: var(--accent); }
+  @media (max-width: 640px) {
+    .pillars { grid-template-columns: repeat(2,1fr); }
+    .steps, .xiyong-grid { grid-template-columns: 1fr; }
+    .mode-hint { display: none; }
+    .mode-btn { padding: 7px 12px; font-size: 12.5px; }
+  }
+</style>
+</head>
+<body data-wx="{{WX}}" data-mode="plain" data-page-node-id="ScIh0MY3OLdifFEAJ8xQK7">
+<div class="wrap" data-page-node-id="0hhYeaqcYBCIriTnjhcI7d">
+
+  <div class="hero" data-page-node-id="w0WM9oOaCnT0zPsBZtahvN">
+    <div class="tag" data-page-node-id="gjH3P7m04kaSxfTQthPGVI">五行能量说明书</div>
+    <h1 data-page-node-id="1bM2T6C4jwotcliqKSS5If">{{八字}}</h1>
+    <div class="sub" data-page-node-id="7t6EXcFHR1y4Tagx142tfn">阳历 {{出生日期}} · {{性别}} · {{出生地}}（真太阳时 {{真太阳时}}）</div>
+    <div class="dms" data-page-node-id="5xICzAGBkDo6f11kWssD8Z">{{日主天干}}{{日主五行}} · {{日主阴阳}}日主</div>
+  </div>
+
+  <!-- 00 盘面速览（客观数据 · 不分版本） -->
+  <div class="card" data-page-node-id="ZrmLU8TctBk4w2L7h0G2M0">
+    <h2 data-page-node-id="wNfhYBwyJEC6H0UCBrptuA"><span class="no" data-page-node-id="i25nALI20yuroGgP5aLSeH">00</span>盘面速览 <span class="faint" data-page-node-id="yrZAbcXujrQvOcEKa7w9yY">（客观数据 · 只陈述不评价）</span></h2>
+    <div class="pillars" data-page-node-id="XknSj2BpOFQC3Qfrqd9yXy">{{四柱}}</div>
+    <!-- 五行条填充口径（双口径，以含藏干为主）：
+         条长 + 大数字 = 含藏干（4 天干 + 4 地支全部藏干，与身强弱判断一致，主口径）
+         末尾小字（明面 N）= 本气（明面 8 字：4 天干 + 4 地支本气，参考对比）
+         条宽 = 含藏干 ÷ 最大含藏干 × 100%
+         label 用五行色 class（wx-jin/wx-mu/wx-shui/wx-huo/wx-tu）
+         顶部 legend 文案（白话版，让完全不懂玄学的人也能秒懂）：
+           "大数＝这股能量的真实总量（包括藏着的）· 小字＝明面上能看得到的"
+         每行结构：
+         <div class="wxrow"><span class="label wx-jin">金</span><div class="track"><div class="fill" style="width:25%;background:#d8b45a"></div></div><span class="num">1</span><span class="benqi">明面 1</span></div> -->
+    <div class="wxbar" data-page-node-id="7MK0TOsZdp1zvCKBgmXden">{{五行条}}</div>
+  </div>
+
+  <!-- 总结速览（00 正下方，不分版本） -->
+  {{总结速览}}
+
+  <!-- ============================================================
+       双版本填充铁律（render.py 填占位符时，务必按下面口径填）：
+       - 白话版（.v-plain）＝ 纯结论，零解释。只给四件事：
+         ① 身强/身弱（一句话结论）② 五行缺什么/多什么
+         ③ 适合做什么 ④ 不适合做什么。
+         十神、生克、扶抑、调候、无根、燥土、庚辛对比、大运合冲刑破
+         —— 一律不进白话版。宁可少讲，不可多解释。
+       - 专业版（.v-pro）＝ 结论 + 为什么。补原理：日主阴阳大小、
+         十神怎么定、身强弱怎么算、喜用三层怎么取、大运合冲刑破。
+       - 两版独立可读：专业版也要带结论；白话版不能残留「为什么」或术语。
+       ============================================================ -->
+
+  <!-- 版本切换（非 sticky，00 之后） -->
+  <div class="mode-switch" data-page-node-id="gmGlGIy82jOD3iizQMgJs0">
+    <div class="mode-toggle" id="modeToggle" data-page-node-id="rfesZ81sFUnMNNoc99whah">
+      <span class="mode-hint" data-page-node-id="ox051HGNmfbGEnryxYUWLw"><span class="arrow">👇</span> 这份报告有 2 种写法，挑一种看</span>
+      <button class="mode-btn active" data-mode="plain" type="button" data-page-node-id="XEGZJ1DK8GlyOEK6nUBH6U">白话易懂版</button>
+      <button class="mode-btn" data-mode="pro" type="button" data-page-node-id="FMXYI3tKSFueHtrjUQPlYh">专业分析版</button>
+    </div>
+    <div class="mode-switch-tip">↗ 往下看每个板块右上角的角标，点一下也能随时切换</div>
+  </div>
+
+  <!-- 01 五行能量地图 -->
+  <div class="card has-badge" data-page-node-id="JySa78b0oHVwg6sXhfGppd">
+    <div class="vc-corner"><span class="vc-badge show-plain">简单说明</span><span class="vc-badge show-pro">专业分析</span></div>
+    <h2 data-page-node-id="gHDSDYCOWObUMaX6RhUq4h"><span class="no" data-page-node-id="AI1ObFsJOD1Bom4Hpmaibd">01</span>五行能量地图</h2>
+    <!-- 白话：你是 X 五行 + 「缺什么/多什么」清单（缺→容易怎样、多→容易怎样），不解释为什么 -->
+    <div class="v-plain" data-page-node-id="8pQxXKsytGKokMCaZEzmOA">{{能量地图_白话}}</div>
+    <!-- 专业：日主阴阳大小对比 + 十神拆解 + 旺衰的生克原理 -->
+    <div class="v-pro" data-page-node-id="80A5ck9rcjsYll3boUumzj">{{能量地图_专业}}</div>
+  </div>
+
+  <!-- 02 什么滋养你、什么消耗你 -->
+  <div class="card has-badge" data-page-node-id="XHdVmj689i1uQ6OWZIhF7u">
+    <div class="vc-corner"><span class="vc-badge show-plain">简单说明</span><span class="vc-badge show-pro">专业分析</span></div>
+    <h2 data-page-node-id="zAvHdDfGHvRJD2kQj44yDf"><span class="no" data-page-node-id="tiS7OOI4T0VTutE45CzcV2">02</span>什么滋养你、什么消耗你</h2>
+    <!-- 白话：身强弱一句话结论 + 「适合做/少做」清单（水金 vs 火木，只给行为/环境/行业，不讲燥土无根） -->
+    <div class="v-plain" data-page-node-id="aXN1v1ZxXH2xMeHyPrOVjO">{{身强弱_白话}} {{喜忌_白话}}</div>
+    <!-- 专业：身强弱怎么算（根气/燥土/扶抑）+ 喜用三层取用 + 为什么水=表达 -->
+    <div class="v-pro" data-page-node-id="1NxNyA2YXxM4ZLxvhip5ay">{{身强弱_专业}} {{喜忌_专业}}</div>
+  </div>
+
+  <!-- 03 同样的能量，不同的活法 -->
+  <div class="card has-badge" data-page-node-id="2dh0FPnlPcn3W0s3DcgHYt">
+    <div class="vc-corner"><span class="vc-badge show-plain">简单说明</span><span class="vc-badge show-pro">专业分析</span></div>
+    <h2 data-page-node-id="ICfaOeTKCEY2jUklmqQnMH"><span class="no" data-page-node-id="BrZ03WpL5kq6b0WpBDDYWF">03</span>同样的能量，不同的活法</h2>
+    <div class="v-plain" data-page-node-id="coNRltnFy3BBJCM1PF3jln">{{容器_白话}}</div>
+    <div class="v-pro" data-page-node-id="BohVOw93q0zMkln2IKB0Xl">{{容器_专业}}</div>
+  </div>
+
+  <!-- 04 往后这些年，怎么走（大运五行色 + 详解） -->
+  <div class="card has-badge" data-page-node-id="110iBhHQJp8zMxHdD2PwnM">
+    <div class="vc-corner"><span class="vc-badge show-plain">简单说明</span><span class="vc-badge show-pro">专业分析</span></div>
+    <h2 data-page-node-id="y1DAYTzWekyrQMQp2Uxyft"><span class="no" data-page-node-id="17yuLJUJdDJLoa3kZMDEIE">04</span>往后这些年，怎么走</h2>
+    <div class="v-plain" data-page-node-id="VKkldWo1zA1UYJURSsdW3n">{{节律_白话}}</div>
+    <div class="v-pro" data-page-node-id="8FPa5gBMfUaMDO9xdJAmGK">{{节律_专业}}</div>
+  </div>
+
+  <!-- 05 今年，风往哪吹（流年：数据卡 + 事业/健康/感情/注意事项） -->
+  <div class="card has-badge" data-page-node-id="lnCard20260903">
+    <div class="vc-corner"><span class="vc-badge show-plain">简单说明</span><span class="vc-badge show-pro">专业分析</span></div>
+    <h2><span class="no">05</span>今年，风往哪吹 <span class="faint">（当年 + 明年的年度气候）</span></h2>
+    <div class="v-plain">{{流年_白话}}</div>
+    <div class="v-pro">{{流年_专业}}</div>
+  </div>
+
+  <!-- 06 做选择时，只问一句 -->
+  <div class="card has-badge" data-page-node-id="5ZrREWq9Oh51zC0KdccpBJ">
+    <div class="vc-corner"><span class="vc-badge show-plain">简单说明</span><span class="vc-badge show-pro">专业分析</span></div>
+    <h2 data-page-node-id="96PwmSUB0xAVHPTAyaXH8V"><span class="no" data-page-node-id="g3RbAEo63c10vrLLPznhsE">06</span>做选择时，只问一句</h2>
+    <div class="v-plain" data-page-node-id="ah8TsntjAeYx4yvEaiRnHG">{{决策镜_白话}}</div>
+    <div class="v-pro" data-page-node-id="rsZWDWS6o61pe0Xc5FDVuJ">{{决策镜_专业}}</div>
+  </div>
+
+  <!-- 07 边界声明（不分版本） -->
+  <div class="card" data-page-node-id="49iacrBzDv2MTbL20PWTF6">
+    <h2 data-page-node-id="zOe4zvFbFQLqnNYWqrZxz0"><span class="no" data-page-node-id="91LopgC9esNTs1tQBIXTHw">07</span>边界声明</h2>
+    {{边界}}
+  </div>
+
+  <div class="footer" data-page-node-id="ELq229yw3hMxHLNXRDNMst">能量是势，行为是帆 —— 势不可改，帆由你掌 <span class="heart" data-page-node-id="83rokvDfzNFfNTJeY1Jl7U">✦</span></div>
+</div>
+
+<script>
+  // 白话 / 专业 版本切换
+  (function(){
+    var btns = document.querySelectorAll('.mode-btn');
+    function setMode(mode){
+      document.body.setAttribute('data-mode', mode);
+      btns.forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+      });
+      try { localStorage.setItem('wx-report-mode', mode); } catch(e){}
+    }
+    var saved = 'plain';
+    try { saved = localStorage.getItem('wx-report-mode') || 'plain'; } catch(e){}
+    setMode(saved);
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        setMode(b.getAttribute('data-mode'));
+      });
+    });
+
+    // 角标点击 = 切到另一种模式
+    document.querySelectorAll('.vc-corner').forEach(function(corner){
+      corner.addEventListener('click', function(){
+        var cur = document.body.getAttribute('data-mode') || 'plain';
+        setMode(cur === 'plain' ? 'pro' : 'plain');
+      });
+    });
+  })();
+</script>
+</body>
+</html>

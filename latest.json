@@ -1,0 +1,7 @@
+{
+  "version": "1.6",
+  "released_at": "2026-09-06",
+  "zip_url": "https://github.com/chen-tiantian-spark/wuxing-energy-report/releases/download/v1.6/wuxing-energy-report_v1.6.zip",
+  "sha256": "09f645753465bfe5056937eb47054a4212636615a10c8741dd7907b6e68d73b9",
+  "changelog": "v1.6 自助更新机制：新增 VERSION / update.json / scripts/update.py，对 AI 说「检查更新」即可自查升级（先展示更新说明、经你同意才执行，更新前自动备份）。\n\nv1.5 话术产品化：问「你能做什么」时不再讲脚本和实现细节，只讲你能得到什么、要给我什么、信息安不安全；报告输出位置修正（不再落到系统临时目录导致预览打不开）；对话回复同样过红线检查。\n\nv1.4 跨环境适配：排盘依赖 lunar-python 已内置打包，任何 python3 直接可跑，不用装任何东西；修正从弱格局下喜忌取用自相矛盾的问题。\n\nv1.3 隐私与健壮性：写死路径清除、城市经度未命中不再静默错盘、劫财十神修正。\n\nv1.2 新增流年详解（当年 + 明年的事业 / 健康 / 感情 / 注意事项）。"
+}
